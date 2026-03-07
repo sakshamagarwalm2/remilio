@@ -1,0 +1,525 @@
+{
+  "query": "BMW X3 30i",
+  "scrapedAt": "2026-03-07T12:44:42.485Z",
+  "totalThreads": 41,
+  "threads": [
+    {
+      "index": 1,
+      "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/241183-blue-bolt-our-bmw-x3-30i-ownership-review-3-years-9-months-16-300kms-completed.html",
+      "status": "done",
+      "pagesVisited": 8,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/241183-blue-bolt-our-bmw-x3-30i-ownership-review-3-years-9-months-16-300kms-completed.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/241183-blue-bolt-our-bmw-x3-30i-ownership-review-3-years-9-months-16-300kms-completed-2.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/241183-blue-bolt-our-bmw-x3-30i-ownership-review-3-years-9-months-16-300kms-completed-3.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/241183-blue-bolt-our-bmw-x3-30i-ownership-review-3-years-9-months-16-300kms-completed-4.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/241183-blue-bolt-our-bmw-x3-30i-ownership-review-3-years-9-months-16-300kms-completed-5.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/241183-blue-bolt-our-bmw-x3-30i-ownership-review-3-years-9-months-16-300kms-completed-6.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/241183-blue-bolt-our-bmw-x3-30i-ownership-review-3-years-9-months-16-300kms-completed-7.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/241183-blue-bolt-our-bmw-x3-30i-ownership-review-3-years-9-months-16-300kms-completed-8.html"
+      ],
+      "postsScraped": 112
+    },
+    {
+      "index": 2,
+      "threadUrl": "https://www.team-bhp.com/forum/suvs-muvs-4x4s/305244-mercedes-glc-300-bmw-x3-30i.html",
+      "status": "done",
+      "pagesVisited": 3,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/suvs-muvs-4x4s/305244-mercedes-glc-300-bmw-x3-30i.html",
+        "https://www.team-bhp.com/forum/suvs-muvs-4x4s/305244-mercedes-glc-300-bmw-x3-30i-2.html",
+        "https://www.team-bhp.com/forum/suvs-muvs-4x4s/305244-mercedes-glc-300-bmw-x3-30i-3.html"
+      ],
+      "postsScraped": 34
+    },
+    {
+      "index": 3,
+      "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/270774-owned-bmw-x3-30i-xdrive-just-16-months-sold-replaced-x3-m40i.html",
+      "status": "done",
+      "pagesVisited": 1,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/270774-owned-bmw-x3-30i-xdrive-just-16-months-sold-replaced-x3-m40i.html"
+      ],
+      "postsScraped": 5
+    },
+    {
+      "index": 4,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma.html",
+      "status": "done",
+      "pagesVisited": 13,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-2.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-3.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-4.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-5.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-6.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-7.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-8.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-9.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-10.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-11.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-12.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-13.html"
+      ],
+      "postsScraped": 188
+    },
+    {
+      "index": 5,
+      "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/247865-review-2022-bmw-x3-lci.html",
+      "status": "done",
+      "pagesVisited": 2,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/247865-review-2022-bmw-x3-lci.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/247865-review-2022-bmw-x3-lci-2.html"
+      ],
+      "postsScraped": 28
+    },
+    {
+      "index": 6,
+      "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/199208-bmw-x3-xdrive30i-launched-rs-56-90-lakh.html",
+      "status": "done",
+      "pagesVisited": 2,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/indian-car-scene/199208-bmw-x3-xdrive30i-launched-rs-56-90-lakh.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/199208-bmw-x3-xdrive30i-launched-rs-56-90-lakh-2.html"
+      ],
+      "postsScraped": 22
+    },
+    {
+      "index": 7,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/207842-bmw-5-series-m-sport-30d-30i-dilemma.html",
+      "status": "done",
+      "pagesVisited": 3,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/207842-bmw-5-series-m-sport-30d-30i-dilemma.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/207842-bmw-5-series-m-sport-30d-30i-dilemma-2.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/207842-bmw-5-series-m-sport-30d-30i-dilemma-3.html"
+      ],
+      "postsScraped": 35
+    },
+    {
+      "index": 8,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/204640-bmw-x3-vs-skoda-kodiaq-edit-booked-audi-q5-tfsi.html",
+      "status": "done",
+      "pagesVisited": 8,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/204640-bmw-x3-vs-skoda-kodiaq-edit-booked-audi-q5-tfsi.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/204640-bmw-x3-vs-skoda-kodiaq-edit-booked-audi-q5-tfsi-2.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/204640-bmw-x3-vs-skoda-kodiaq-edit-booked-audi-q5-tfsi-3.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/204640-bmw-x3-vs-skoda-kodiaq-edit-booked-audi-q5-tfsi-4.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/204640-bmw-x3-vs-skoda-kodiaq-edit-booked-audi-q5-tfsi-5.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/204640-bmw-x3-vs-skoda-kodiaq-edit-booked-audi-q5-tfsi-6.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/204640-bmw-x3-vs-skoda-kodiaq-edit-booked-audi-q5-tfsi-7.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/204640-bmw-x3-vs-skoda-kodiaq-edit-booked-audi-q5-tfsi-8.html"
+      ],
+      "postsScraped": 114
+    },
+    {
+      "index": 9,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/213091-dilemma-mercedes-glc-vs-gle-vs-bmw-x3.html",
+      "status": "done",
+      "pagesVisited": 1,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/213091-dilemma-mercedes-glc-vs-gle-vs-bmw-x3.html"
+      ],
+      "postsScraped": 14
+    },
+    {
+      "index": 10,
+      "threadUrl": "https://www.team-bhp.com/forum/technical-stuff/231532-problem-brand-new-bmw-x3.html",
+      "status": "done",
+      "pagesVisited": 2,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/technical-stuff/231532-problem-brand-new-bmw-x3.html",
+        "https://www.team-bhp.com/forum/technical-stuff/231532-problem-brand-new-bmw-x3-2.html"
+      ],
+      "postsScraped": 25
+    },
+    {
+      "index": 11,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/253699-luxury-suv-dilemma-mercedes-gla-vs-bmw-x3.html",
+      "status": "done",
+      "pagesVisited": 1,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/253699-luxury-suv-dilemma-mercedes-gla-vs-bmw-x3.html"
+      ],
+      "postsScraped": 11
+    },
+    {
+      "index": 12,
+      "threadUrl": "https://www.team-bhp.com/forum/suvs-muvs-4x4s/292897-3-year-old-bmw-x3-petrol-vs-new-mahindra-6-a.html",
+      "status": "done",
+      "pagesVisited": 1,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/suvs-muvs-4x4s/292897-3-year-old-bmw-x3-petrol-vs-new-mahindra-6-a.html"
+      ],
+      "postsScraped": 11
+    },
+    {
+      "index": 13,
+      "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/290085-4th-generation-bmw-x3-launched-75-80-lakh.html",
+      "status": "done",
+      "pagesVisited": 3,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/indian-car-scene/290085-4th-generation-bmw-x3-launched-75-80-lakh.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/290085-4th-generation-bmw-x3-launched-75-80-lakh-2.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/290085-4th-generation-bmw-x3-launched-75-80-lakh-3.html"
+      ],
+      "postsScraped": 39
+    },
+    {
+      "index": 14,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/249933-bmw-x3-diesel-vs-petrol.html",
+      "status": "done",
+      "pagesVisited": 2,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/249933-bmw-x3-diesel-vs-petrol.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/249933-bmw-x3-diesel-vs-petrol-2.html"
+      ],
+      "postsScraped": 19
+    },
+    {
+      "index": 15,
+      "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/302908-2026-bmw-x3-get-xdrive30-variant.html",
+      "status": "done",
+      "pagesVisited": 4,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/indian-car-scene/302908-2026-bmw-x3-get-xdrive30-variant.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/302908-2026-bmw-x3-get-xdrive30-variant-2.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/302908-2026-bmw-x3-get-xdrive30-variant-3.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/302908-2026-bmw-x3-get-xdrive30-variant-4.html"
+      ],
+      "postsScraped": 52
+    },
+    {
+      "index": 16,
+      "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/293662-2025-bmw-x3-g45-review.html",
+      "status": "done",
+      "pagesVisited": 4,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/official-new-car-reviews/293662-2025-bmw-x3-g45-review.html",
+        "https://www.team-bhp.com/forum/official-new-car-reviews/293662-2025-bmw-x3-g45-review-2.html",
+        "https://www.team-bhp.com/forum/official-new-car-reviews/293662-2025-bmw-x3-g45-review-3.html",
+        "https://www.team-bhp.com/forum/official-new-car-reviews/293662-2025-bmw-x3-g45-review-4.html"
+      ],
+      "postsScraped": 52
+    },
+    {
+      "index": 17,
+      "threadUrl": "https://www.team-bhp.com/forum/introduce-yourself/270269-vanakkam-colorado-chennai.html",
+      "status": "done",
+      "pagesVisited": 1,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/introduce-yourself/270269-vanakkam-colorado-chennai.html"
+      ],
+      "postsScraped": 3
+    },
+    {
+      "index": 18,
+      "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/263228-bmw-x3-loses-258-bhp-2l-turbo-petrol-just-2l-diesel-now.html",
+      "status": "done",
+      "pagesVisited": 1,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/indian-car-scene/263228-bmw-x3-loses-258-bhp-2l-turbo-petrol-just-2l-diesel-now.html"
+      ],
+      "postsScraped": 15
+    },
+    {
+      "index": 19,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/246858-help-me-my-conundrum-choosing-right-bimmer-bmw-3-series-vs-5-series-vs-x3.html",
+      "status": "done",
+      "pagesVisited": 6,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/246858-help-me-my-conundrum-choosing-right-bimmer-bmw-3-series-vs-5-series-vs-x3.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/246858-help-me-my-conundrum-choosing-right-bimmer-bmw-3-series-vs-5-series-vs-x3-2.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/246858-help-me-my-conundrum-choosing-right-bimmer-bmw-3-series-vs-5-series-vs-x3-3.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/246858-help-me-my-conundrum-choosing-right-bimmer-bmw-3-series-vs-5-series-vs-x3-4.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/246858-help-me-my-conundrum-choosing-right-bimmer-bmw-3-series-vs-5-series-vs-x3-5.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/246858-help-me-my-conundrum-choosing-right-bimmer-bmw-3-series-vs-5-series-vs-x3-6.html"
+      ],
+      "postsScraped": 86
+    },
+    {
+      "index": 20,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/270361-what-next-replacement-bmw-x3m40i.html",
+      "status": "done",
+      "pagesVisited": 2,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/270361-what-next-replacement-bmw-x3m40i.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/270361-what-next-replacement-bmw-x3m40i-2.html"
+      ],
+      "postsScraped": 30
+    },
+    {
+      "index": 21,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/250451-lexus-nx-350h-vs-bmw-x3-vs-audi-q5-vs-mercedes-glc-vs-others.html",
+      "status": "done",
+      "pagesVisited": 2,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/250451-lexus-nx-350h-vs-bmw-x3-vs-audi-q5-vs-mercedes-glc-vs-others.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/250451-lexus-nx-350h-vs-bmw-x3-vs-audi-q5-vs-mercedes-glc-vs-others-2.html"
+      ],
+      "postsScraped": 22
+    },
+    {
+      "index": 22,
+      "threadUrl": "https://www.team-bhp.com/forum/tyre-alloy-wheel-section/266668-bmw-x3-tyre-dilemma.html",
+      "status": "done",
+      "pagesVisited": 2,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/tyre-alloy-wheel-section/266668-bmw-x3-tyre-dilemma.html",
+        "https://www.team-bhp.com/forum/tyre-alloy-wheel-section/266668-bmw-x3-tyre-dilemma-2.html"
+      ],
+      "postsScraped": 23
+    },
+    {
+      "index": 23,
+      "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/264383-bmw-x3-m40i-coming-soon-india.html",
+      "status": "done",
+      "pagesVisited": 4,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/indian-car-scene/264383-bmw-x3-m40i-coming-soon-india.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/264383-bmw-x3-m40i-coming-soon-india-2.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/264383-bmw-x3-m40i-coming-soon-india-3.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/264383-bmw-x3-m40i-coming-soon-india-4.html"
+      ],
+      "postsScraped": 56
+    },
+    {
+      "index": 24,
+      "threadUrl": "https://www.team-bhp.com/forum/technical-stuff/246431-starter-motor-failure-my-3-5-year-old-bmw-x3.html",
+      "status": "done",
+      "pagesVisited": 1,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/technical-stuff/246431-starter-motor-failure-my-3-5-year-old-bmw-x3.html"
+      ],
+      "postsScraped": 5
+    },
+    {
+      "index": 25,
+      "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/286623-finally-bought-6-cylinder-bmw-x3m40i-review-completed-48-280-kms-30-000-miles-15-months.html",
+      "status": "done",
+      "pagesVisited": 1,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/286623-finally-bought-6-cylinder-bmw-x3m40i-review-completed-48-280-kms-30-000-miles-15-months.html"
+      ],
+      "postsScraped": 7
+    },
+    {
+      "index": 26,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-3.html?tbhp_infinite_load=1",
+      "status": "done",
+      "pagesVisited": 11,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-3.html?tbhp_infinite_load=1",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-4.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-5.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-6.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-7.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-8.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-9.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-10.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-11.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-12.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-13.html"
+      ],
+      "postsScraped": 158
+    },
+    {
+      "index": 27,
+      "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/199208-bmw-x3-xdrive30i-launched-rs-56-90-lakh-2.html?tbhp_infinite_load=1",
+      "status": "done",
+      "pagesVisited": 1,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/indian-car-scene/199208-bmw-x3-xdrive30i-launched-rs-56-90-lakh-2.html?tbhp_infinite_load=1"
+      ],
+      "postsScraped": 7
+    },
+    {
+      "index": 28,
+      "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/243711-dream-come-true-my-phytonic-blue-bmw-x3-g01-xdrive-20d-luxury-line-review.html",
+      "status": "done",
+      "pagesVisited": 5,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/243711-dream-come-true-my-phytonic-blue-bmw-x3-g01-xdrive-20d-luxury-line-review.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/243711-dream-come-true-my-phytonic-blue-bmw-x3-g01-xdrive-20d-luxury-line-review-2.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/243711-dream-come-true-my-phytonic-blue-bmw-x3-g01-xdrive-20d-luxury-line-review-3.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/243711-dream-come-true-my-phytonic-blue-bmw-x3-g01-xdrive-20d-luxury-line-review-4.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/243711-dream-come-true-my-phytonic-blue-bmw-x3-g01-xdrive-20d-luxury-line-review-5.html"
+      ],
+      "postsScraped": 66
+    },
+    {
+      "index": 29,
+      "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/275686-my-bmw-x3-m40i-ownership-review.html",
+      "status": "done",
+      "pagesVisited": 3,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/275686-my-bmw-x3-m40i-ownership-review.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/275686-my-bmw-x3-m40i-ownership-review-2.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/275686-my-bmw-x3-m40i-ownership-review-3.html"
+      ],
+      "postsScraped": 35
+    },
+    {
+      "index": 30,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-9.html?tbhp_infinite_load=1",
+      "status": "done",
+      "pagesVisited": 5,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-9.html?tbhp_infinite_load=1",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-10.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-11.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-12.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-13.html"
+      ],
+      "postsScraped": 68
+    },
+    {
+      "index": 31,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/238393-audi-a6-vs-bmw-x3-vs-mercedes-glc.html",
+      "status": "done",
+      "pagesVisited": 3,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/238393-audi-a6-vs-bmw-x3-vs-mercedes-glc.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/238393-audi-a6-vs-bmw-x3-vs-mercedes-glc-2.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/238393-audi-a6-vs-bmw-x3-vs-mercedes-glc-3.html"
+      ],
+      "postsScraped": 35
+    },
+    {
+      "index": 32,
+      "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/267127-my-hyundai-i20-1-2-kappa-ivt-sportz-ownership-review-necessity-turns-luxury.html",
+      "status": "done",
+      "pagesVisited": 3,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/267127-my-hyundai-i20-1-2-kappa-ivt-sportz-ownership-review-necessity-turns-luxury.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/267127-my-hyundai-i20-1-2-kappa-ivt-sportz-ownership-review-necessity-turns-luxury-2.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/267127-my-hyundai-i20-1-2-kappa-ivt-sportz-ownership-review-necessity-turns-luxury-3.html"
+      ],
+      "postsScraped": 32
+    },
+    {
+      "index": 33,
+      "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/223743-bmw-launches-6-year-unlimited-km-warranty-edit-bmw-discontinues-6th-year-warranty.html",
+      "status": "done",
+      "pagesVisited": 7,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/indian-car-scene/223743-bmw-launches-6-year-unlimited-km-warranty-edit-bmw-discontinues-6th-year-warranty.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/223743-bmw-launches-6-year-unlimited-km-warranty-edit-bmw-discontinues-6th-year-warranty-2.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/223743-bmw-launches-6-year-unlimited-km-warranty-edit-bmw-discontinues-6th-year-warranty-3.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/223743-bmw-launches-6-year-unlimited-km-warranty-edit-bmw-discontinues-6th-year-warranty-4.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/223743-bmw-launches-6-year-unlimited-km-warranty-edit-bmw-discontinues-6th-year-warranty-5.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/223743-bmw-launches-6-year-unlimited-km-warranty-edit-bmw-discontinues-6th-year-warranty-6.html",
+        "https://www.team-bhp.com/forum/indian-car-scene/223743-bmw-launches-6-year-unlimited-km-warranty-edit-bmw-discontinues-6th-year-warranty-7.html"
+      ],
+      "postsScraped": 91
+    },
+    {
+      "index": 34,
+      "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/218339-blue-dream-reality-my-bmw-x3-g01-20d-xdrive-luxury-line.html",
+      "status": "done",
+      "pagesVisited": 5,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/218339-blue-dream-reality-my-bmw-x3-g01-20d-xdrive-luxury-line.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/218339-blue-dream-reality-my-bmw-x3-g01-20d-xdrive-luxury-line-2.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/218339-blue-dream-reality-my-bmw-x3-g01-20d-xdrive-luxury-line-3.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/218339-blue-dream-reality-my-bmw-x3-g01-20d-xdrive-luxury-line-4.html",
+        "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/218339-blue-dream-reality-my-bmw-x3-g01-20d-xdrive-luxury-line-5.html"
+      ],
+      "postsScraped": 68
+    },
+    {
+      "index": 35,
+      "threadUrl": "https://www.team-bhp.com/forum/suvs-muvs-4x4s/251893-booked-bmw-x3-put-down-payment-apartment-now-have-budget-50-lakhs-suv.html",
+      "status": "done",
+      "pagesVisited": 3,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/suvs-muvs-4x4s/251893-booked-bmw-x3-put-down-payment-apartment-now-have-budget-50-lakhs-suv.html",
+        "https://www.team-bhp.com/forum/suvs-muvs-4x4s/251893-booked-bmw-x3-put-down-payment-apartment-now-have-budget-50-lakhs-suv-2.html",
+        "https://www.team-bhp.com/forum/suvs-muvs-4x4s/251893-booked-bmw-x3-put-down-payment-apartment-now-have-budget-50-lakhs-suv-3.html"
+      ],
+      "postsScraped": 37
+    },
+    {
+      "index": 36,
+      "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/217921-driven-2020-mercedes-glc-facelift.html",
+      "status": "done",
+      "pagesVisited": 3,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/official-new-car-reviews/217921-driven-2020-mercedes-glc-facelift.html",
+        "https://www.team-bhp.com/forum/official-new-car-reviews/217921-driven-2020-mercedes-glc-facelift-2.html",
+        "https://www.team-bhp.com/forum/official-new-car-reviews/217921-driven-2020-mercedes-glc-facelift-3.html"
+      ],
+      "postsScraped": 37
+    },
+    {
+      "index": 37,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/205136-year-end-deal-bmw-x3-vs-mercedes-e-class-edit-booked-bmw-x5.html",
+      "status": "done",
+      "pagesVisited": 2,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/205136-year-end-deal-bmw-x3-vs-mercedes-e-class-edit-booked-bmw-x5.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/205136-year-end-deal-bmw-x3-vs-mercedes-e-class-edit-booked-bmw-x5-2.html"
+      ],
+      "postsScraped": 28
+    },
+    {
+      "index": 38,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-5.html?tbhp_infinite_load=1",
+      "status": "done",
+      "pagesVisited": 9,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-5.html?tbhp_infinite_load=1",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-6.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-7.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-8.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-9.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-10.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-11.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-12.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-13.html"
+      ],
+      "postsScraped": 128
+    },
+    {
+      "index": 39,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/231196-bmw-x3-buy-year-end-discounts-wait-new-year.html",
+      "status": "done",
+      "pagesVisited": 2,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/231196-bmw-x3-buy-year-end-discounts-wait-new-year.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/231196-bmw-x3-buy-year-end-discounts-wait-new-year-2.html"
+      ],
+      "postsScraped": 27
+    },
+    {
+      "index": 40,
+      "threadUrl": "https://www.team-bhp.com/forum/electric-cars/245565-bmw-ix-electric-suv-launched-rs-1-16-crore.html",
+      "status": "done",
+      "pagesVisited": 3,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/electric-cars/245565-bmw-ix-electric-suv-launched-rs-1-16-crore.html",
+        "https://www.team-bhp.com/forum/electric-cars/245565-bmw-ix-electric-suv-launched-rs-1-16-crore-2.html",
+        "https://www.team-bhp.com/forum/electric-cars/245565-bmw-ix-electric-suv-launched-rs-1-16-crore-3.html"
+      ],
+      "postsScraped": 43
+    },
+    {
+      "index": 41,
+      "threadUrl": "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-8.html?tbhp_infinite_load=1",
+      "status": "done",
+      "pagesVisited": 6,
+      "pageUrls": [
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-8.html?tbhp_infinite_load=1",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-9.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-10.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-11.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-12.html",
+        "https://www.team-bhp.com/forum/luxury-imports-niche/199505-bmw-x3-20d-vs-30i-dilemma-13.html"
+      ],
+      "postsScraped": 83
+    }
+  ]
+}
