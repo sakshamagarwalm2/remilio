@@ -1,20 +1,57 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 // ──────────────────────────────────────────────
-// CONFIG
+// CAR LIST — add/remove entries as needed
 // ──────────────────────────────────────────────
-const MAKE = process.argv[2] || 'BMW';
-const MODEL = process.argv[3] || 'X3';
-const VARIANT = process.argv[4] || '30i';
+const CAR_LIST = [
+    { make: 'BMW',      model: 'X3',     variant: '30i' },
+    { make: 'Honda',    model: 'City',   variant: 'ZX CVT' },
+    { make: 'Hyundai',  model: 'Creta',  variant: 'SX Turbo' },
+    { make: 'Tata',     model: 'Nexon',  variant: 'EV Max' },
+    { make: 'Maruti',   model: 'Swift',  variant: 'ZXi Plus' },
+    { make: 'Toyota',   model: 'Innova', variant: 'Crysta GX' },
+];
 
-const DELAY_AFTER_SEARCH_LOAD = 3000;
-const DELAY_AFTER_REVIEWS_CLICK = 6000;  // wait for GSC AJAX to fully render
-const DELAY_AFTER_PAGE_CLICK = 5000;  // wait after clicking a page number
-const DELAY_BETWEEN_THREADS = 3000;
-const DELAY_BETWEEN_THREAD_PAGES = 2000;
+// ──────────────────────────────────────────────
+// TIMING CONFIG
+// ──────────────────────────────────────────────
+const DELAY_AFTER_SEARCH_LOAD     = 3000;
+const DELAY_AFTER_REVIEWS_CLICK   = 6000;
+const DELAY_AFTER_PAGE_CLICK      = 5000;
+const DELAY_BETWEEN_THREADS       = 3000;
+const DELAY_BETWEEN_THREAD_PAGES  = 2000;
+const DELAY_BETWEEN_CARS          = 5000;
 
+// ──────────────────────────────────────────────
+// CONSTANTS
+// ──────────────────────────────────────────────
+const OFFICIAL_REVIEW_BASE = 'https://www.team-bhp.com/forum/official-new-car-reviews';
+const OUTPUT_DIR = path.join(__dirname, 'scraped_data');
+
+// ──────────────────────────────────────────────
+// RESUME / PROGRESS TRACKING
+// progress.json tracks which car index we are on
+// so if the script crashes, re-running resumes from there
+// ──────────────────────────────────────────────
+const PROGRESS_FILE = path.join(OUTPUT_DIR, 'progress.json');
+
+function loadProgress() {
+    if (fs.existsSync(PROGRESS_FILE)) {
+        return JSON.parse(fs.readFileSync(PROGRESS_FILE, 'utf-8'));
+    }
+    return { lastCompletedCarIndex: -1 };  // -1 means nothing done yet
+}
+
+function saveProgress(carIndex) {
+    fs.writeFileSync(PROGRESS_FILE, JSON.stringify({ lastCompletedCarIndex: carIndex }, null, 2), 'utf-8');
+}
+
+// ──────────────────────────────────────────────
+// HELPERS
+// ──────────────────────────────────────────────
 const DELAY = ms => new Promise(r => setTimeout(r, ms));
 function log(msg) { console.log(`[${new Date().toLocaleTimeString()}] ${msg}`); }
 
@@ -22,10 +59,72 @@ function normalizeThreadUrl(href) {
     return href.split('#')[0].replace(/-(\d+)\.html$/, '.html');
 }
 
-// ─────────────────────────────────────────────────────────────
-// Wait until GSC results are rendered in DOM
-// We know results are loaded when .gsc-result elements appear
-// ─────────────────────────────────────────────────────────────
+/** Only keep URLs that start with the official reviews base */
+function isOfficialReviewUrl(href) {
+    return href.startsWith(OFFICIAL_REVIEW_BASE);
+}
+
+/** Generate a deterministic Mongo-style ObjectId-like hex string from a string */
+function makeObjectId(seed) {
+    const hash = crypto.createHash('md5').update(seed).digest('hex');
+    return hash.substring(0, 24); // 24 hex chars like ObjectId
+}
+
+/** Convert a post into the target MongoDB document shape */
+function toMongoDoc({ post, threadUrl, brandSlug, modelSlug }) {
+    const brandOid  = makeObjectId(`brand_${brandSlug}`);
+    const modelOid  = makeObjectId(`model_${modelSlug}`);
+    const reviewOid = makeObjectId(`${threadUrl}_${post.postNumber}_${post.author.name}`);
+    const cwReviewId = Math.abs(parseInt(crypto.createHash('md5').update(reviewOid).digest('hex').substring(0, 8), 16));
+
+    // Try to parse overall rating from content (heuristic — 0 if not found)
+    const ratingMatch = post.content.match(/(\d)\s*\/\s*10|\brat(?:ing|ed)[^\d]*(\d)/i);
+    const overallRating = ratingMatch ? parseInt(ratingMatch[1] || ratingMatch[2]) : 0;
+
+    return {
+        _id:          { $oid: reviewOid },
+        cwReviewId,
+        __v:          0,
+        brandId:      { $oid: brandOid },
+        createdAt:    { $date: new Date().toISOString() },
+        customerInfo: {
+            userName:     post.author.name     || '',
+            userEmail:    '',                          // not available on forum
+            userlocation: post.author.location || '',
+        },
+        description:    post.content,
+        downvotes:      0,
+        entryDate:      post.postDate || '',
+        modelId:        { $oid: modelOid },
+        overallRating,
+        ratingParams: {
+            designAndStyling:            0,
+            comfortAndSpace:             0,
+            performance:                 0,
+            valueForMoney:               0,
+            featuresAndTechnology:       0,
+            afterSalesCostAndExperience: 0,
+        },
+        title:              threadUrl.split('/').pop().replace('.html', '').replace(/-/g, ' '),
+        updatedAt:          { $date: new Date().toISOString() },
+        upvotes:            0,
+        userUploadedImages: [],
+        status:             'pending',
+        // Extra metadata (not in schema but useful for traceability)
+        _meta: {
+            threadUrl,
+            postNumber:   post.postNumber,
+            authorRank:   post.author.rank,
+            authorPosts:  post.author.postsCount,
+            authorJoined: post.author.joinDate,
+            source:       'team-bhp',
+        },
+    };
+}
+
+// ──────────────────────────────────────────────
+// GSC WAIT HELPERS
+// ──────────────────────────────────────────────
 async function waitForGSCResults(page, timeoutMs = 10000) {
     try {
         await page.waitForFunction(
@@ -33,15 +132,9 @@ async function waitForGSCResults(page, timeoutMs = 10000) {
             { timeout: timeoutMs }
         );
         return true;
-    } catch (_) {
-        return false;
-    }
+    } catch (_) { return false; }
 }
 
-// ─────────────────────────────────────────────────────────────
-// Wait until GSC shows results for a specific page number
-// (active page indicator changes class to gsc-cursor-current-page)
-// ─────────────────────────────────────────────────────────────
 async function waitForGSCPage(page, pageNum, timeoutMs = 10000) {
     try {
         await page.waitForFunction(
@@ -52,34 +145,25 @@ async function waitForGSCPage(page, pageNum, timeoutMs = 10000) {
             { timeout: timeoutMs },
             pageNum
         );
-        await new Promise(r => setTimeout(r, 1500)); // small extra settle time
+        await new Promise(r => setTimeout(r, 1500));
         return true;
-    } catch (_) {
-        return false;
-    }
+    } catch (_) { return false; }
 }
 
-// ─────────────────────────────────────────────────────────────
-// Grab all forum thread links currently visible in GSC results
-// ─────────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────
+// Grab links — only official-new-car-reviews URLs
+// ──────────────────────────────────────────────
 async function grabCurrentPageLinks(page) {
-    return page.evaluate(() =>
+    const links = await page.evaluate(() =>
         Array.from(document.querySelectorAll('a.gs-title, .gsc-webResult a[href], .gs-result a[href]'))
             .map(a => a.href || '')
-            .filter(h =>
-                h.includes('team-bhp.com/forum') &&
-                h.includes('.html') &&
-                !h.includes('/member') &&
-                !h.includes('/search.php') &&
-                !h.includes('/galleryV2') &&
-                !h.includes('official-new-car-reviews/?')
-            )
     );
+    return links.filter(h => h.startsWith('https://www.team-bhp.com/forum/official-new-car-reviews') && h.includes('.html'));
 }
 
-// ─────────────────────────────────────────────────────────────
-// STEP 1 — Collect all unique thread URLs from search
-// ─────────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────
+// STEP 1 — Collect thread URLs
+// ──────────────────────────────────────────────
 async function collectReviewLinks(page, query) {
     log(`\n🔍 Searching for: "${query}"`);
 
@@ -93,7 +177,6 @@ async function collectReviewLinks(page, query) {
     log(`Waiting ${DELAY_AFTER_SEARCH_LOAD / 1000}s for page to settle...`);
     await DELAY(DELAY_AFTER_SEARCH_LOAD);
 
-    // ── Click "Reviews" tab ───────────────────────────────────
     log('Clicking "Reviews" tab...');
     const clicked = await page.evaluate(() => {
         const el = Array.from(document.querySelectorAll('a, div, span, li, td'))
@@ -103,80 +186,64 @@ async function collectReviewLinks(page, query) {
     });
 
     if (clicked) {
-        log(`✔ Reviews tab clicked! Waiting ${DELAY_AFTER_REVIEWS_CLICK / 1000}s for GSC to load results...`);
+        log(`✔ Reviews tab clicked! Waiting ${DELAY_AFTER_REVIEWS_CLICK / 1000}s...`);
         await DELAY(DELAY_AFTER_REVIEWS_CLICK);
-        // Extra: wait until actual result cards appear
         const loaded = await waitForGSCResults(page, 8000);
-        log(loaded ? '✔ GSC results are visible in DOM' : '⚠️  GSC results may not be fully loaded yet');
+        log(loaded ? '✔ GSC results visible' : '⚠️  GSC results may not be fully loaded');
     } else {
         log('⚠️  Reviews tab not found — using current results');
         await DELAY(3000);
     }
 
-    // ── How many pages are there? ─────────────────────────────
-    const totalPages = await page.evaluate(() => {
-        const pages = document.querySelectorAll('.gsc-cursor-page');
-        return pages.length; // e.g. 10
-    });
+    const totalPages = await page.evaluate(() =>
+        document.querySelectorAll('.gsc-cursor-page').length
+    );
     log(`Found ${totalPages} search result pages`);
 
     const seenRoots = new Set();
 
-    // ── Scrape page 1 ─────────────────────────────────────────
-    log(`\nScraping search results page 1 / ${totalPages}...`);
-    const page1Links = await grabCurrentPageLinks(page);
-    page1Links.forEach(h => seenRoots.add(normalizeThreadUrl(h)));
-    log(`  +${page1Links.length} links | ${seenRoots.size} unique so far`);
+    log(`\nScraping page 1 / ${totalPages}...`);
+    (await grabCurrentPageLinks(page)).forEach(h => seenRoots.add(normalizeThreadUrl(h)));
+    log(`  ${seenRoots.size} unique official-review links so far`);
 
-    // ── Click through pages 2..N ──────────────────────────────
     for (let p = 2; p <= totalPages; p++) {
-        log(`\nClicking page ${p} of ${totalPages}...`);
-
-        const didClick = await page.evaluate((pageNum) => {
+        log(`\nClicking page ${p} / ${totalPages}...`);
+        const didClick = await page.evaluate((num) => {
             const btn = Array.from(document.querySelectorAll('.gsc-cursor-page'))
-                .find(el => el.textContent.trim() === String(pageNum));
+                .find(el => el.textContent.trim() === String(num));
             if (btn) { btn.click(); return true; }
             return false;
         }, p);
 
-        if (!didClick) {
-            log(`  ⚠️  Could not find page ${p} button — stopping early`);
-            break;
-        }
+        if (!didClick) { log(`  ⚠️  Page ${p} button not found — stopping`); break; }
 
-        // Wait until the active page indicator updates to confirm load
-        log(`  Waiting for page ${p} results to load...`);
         const loaded = await waitForGSCPage(page, p, 10000);
-        if (!loaded) {
-            log(`  ⚠️  Page ${p} did not confirm load — trying anyway`);
-            await DELAY(DELAY_AFTER_PAGE_CLICK);
-        }
+        if (!loaded) { log(`  ⚠️  Page ${p} did not confirm load`); await DELAY(DELAY_AFTER_PAGE_CLICK); }
 
-        const links = await grabCurrentPageLinks(page);
         let newCount = 0;
-        links.forEach(h => {
+        (await grabCurrentPageLinks(page)).forEach(h => {
             const root = normalizeThreadUrl(h);
             if (!seenRoots.has(root)) { seenRoots.add(root); newCount++; }
         });
-        log(`  ✔ Page ${p} loaded | +${newCount} new | ${seenRoots.size} unique total`);
+        log(`  ✔ Page ${p} | +${newCount} new | ${seenRoots.size} total`);
     }
 
     const unique = [...seenRoots];
-    log(`\n📋 Final queue — ${unique.length} unique threads:`);
+    log(`\n📋 ${unique.length} unique official-review threads found`);
     unique.forEach((u, i) => log(`   ${i + 1}. ${u}`));
     return unique;
 }
 
-// ─────────────────────────────────────────────────────────────
-// STEP 2 — Scrape posts from each thread (all pages)
-// ─────────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────
+// STEP 2 — Scrape posts from a thread
+// ──────────────────────────────────────────────
 async function scrapeThreadPage(page) {
     return page.evaluate(() => {
         const posts = document.querySelectorAll('table[id^="post"]');
         const results = [];
         posts.forEach(post => {
-            const userMenu = post.querySelector('div[id^="postmenu_"]');
-            const userName = userMenu ? userMenu.innerText.trim() : 'Unknown';
+            const userMenu  = post.querySelector('div[id^="postmenu_"]');
+            const userName  = userMenu ? userMenu.innerText.trim() : 'Unknown';
 
             const cell = post.querySelector('td.alt2');
             let userRank = '', joinDate = '', location = '', postsCount = '';
@@ -187,8 +254,8 @@ async function scrapeThreadPage(page) {
                 const m1 = text.match(/Join Date:\s*(.*)/);
                 const m2 = text.match(/Location:\s*(.*)/);
                 const m3 = text.match(/Posts:\s*(.*)/);
-                if (m1) joinDate = m1[1].trim();
-                if (m2) location = m2[1].trim();
+                if (m1) joinDate  = m1[1].trim();
+                if (m2) location  = m2[1].trim();
                 if (m3) postsCount = m3[1].trim();
             }
 
@@ -196,11 +263,11 @@ async function scrapeThreadPage(page) {
             let postDate = '', postNumber = '';
             if (dateEl) {
                 const parts = dateEl.innerText.trim().split('#');
-                postDate = parts[0].trim();
+                postDate   = parts[0].trim();
                 postNumber = parts[1] ? '#' + parts[1].trim() : '';
             }
 
-            const msgEl = post.querySelector('div[id^="post_message_"]');
+            const msgEl  = post.querySelector('div[id^="post_message_"]');
             const content = msgEl ? msgEl.innerText.trim() : '';
 
             results.push({
@@ -216,8 +283,8 @@ async function scrapeThreadPage(page) {
 async function scrapeThread(page, threadUrl) {
     log(`  Opening: ${threadUrl}`);
     let currentUrl = threadUrl;
-    let allPosts = [];
-    let pageNum = 1;
+    let allPosts   = [];
+    let pageNum    = 1;
     const pageUrls = [];
 
     while (currentUrl) {
@@ -246,40 +313,38 @@ async function scrapeThread(page, threadUrl) {
     return { posts: allPosts, pagesVisited: pageNum, pageUrls };
 }
 
-// ─────────────────────────────────────────────────────────────
-// MAIN
-// ─────────────────────────────────────────────────────────────
-(async () => {
-    const query = `${MAKE} ${MODEL} ${VARIANT}`;
-    const slug = query.replace(/\s+/g, '_').toLowerCase();
+// ──────────────────────────────────────────────
+// PROCESS ONE CAR
+// ──────────────────────────────────────────────
+async function processCar(page, carEntry, carIndex) {
+    const { make, model, variant } = carEntry;
+    const query    = `${make} ${model} ${variant}`;
+    const slug     = query.replace(/\s+/g, '_').toLowerCase();
+    const brandSlug = make.toLowerCase();
+    const modelSlug = `${make}_${model}`.toLowerCase().replace(/\s+/g, '_');
 
-    log(`🚗  Team-BHP scraper  |  "${query}"`);
-    log(`👁️   Browser is VISIBLE\n`);
+    log(`\n${'═'.repeat(60)}`);
+    log(`🚗  CAR ${carIndex + 1} / ${CAR_LIST.length}:  ${query}`);
+    log(`${'═'.repeat(60)}`);
 
-    const outputDir = path.join(__dirname, 'scraped_data');
-    fs.mkdirSync(outputDir, { recursive: true });
-    const reviewsFile = path.join(outputDir, `${slug}_reviews.json`);
-    const queueFile = path.join(outputDir, `${slug}_queue.json`);
+    const reviewsFile = path.join(OUTPUT_DIR, `${slug}_reviews.json`);
+    const queueFile   = path.join(OUTPUT_DIR, `${slug}_queue.json`);
+    const mongoFile   = path.join(OUTPUT_DIR, `${slug}_mongo.json`);
 
-    const browser = await puppeteer.launch({
-        headless: false,
-        defaultViewport: null,
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--start-maximized']
-    });
+    // ── Step 1: collect URLs ──────────────────────────────────
+    const reviewLinks = await collectReviewLinks(page, query);
+    if (!reviewLinks.length) {
+        log('❌ No official-review links found for this car — skipping.');
+        return;
+    }
 
-    const page = await browser.newPage();
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-
-    try {
-        // ── Step 1: collect all URLs ──────────────────────────────
-        const reviewLinks = await collectReviewLinks(page, query);
-
-        if (!reviewLinks.length) {
-            log('❌ No links found.'); await browser.close(); return;
-        }
-
-        // Save queue
-        const queueData = {
+    // Build / load queue (supports resume within a car too)
+    let queueData;
+    if (fs.existsSync(queueFile)) {
+        queueData = JSON.parse(fs.readFileSync(queueFile, 'utf-8'));
+        log(`📋 Existing queue loaded (${queueData.threads.length} threads)`);
+    } else {
+        queueData = {
             query, scrapedAt: new Date().toISOString(),
             totalThreads: reviewLinks.length,
             threads: reviewLinks.map((url, i) => ({
@@ -288,54 +353,121 @@ async function scrapeThread(page, threadUrl) {
             }))
         };
         fs.writeFileSync(queueFile, JSON.stringify(queueData, null, 2), 'utf-8');
-        log(`\n📁 Queue saved → ${queueFile}`);
+        log(`📁 Queue saved → ${queueFile}`);
+    }
 
-        // ── Step 2: scrape each thread ────────────────────────────
-        const allThreadData = [];
-        for (let i = 0; i < reviewLinks.length; i++) {
-            const url = reviewLinks[i];
-            const entry = queueData.threads[i];
+    // Load previously scraped data (if resuming)
+    let allThreadData = fs.existsSync(reviewsFile)
+        ? JSON.parse(fs.readFileSync(reviewsFile, 'utf-8'))
+        : [];
+    let allMongoDocs = fs.existsSync(mongoFile)
+        ? JSON.parse(fs.readFileSync(mongoFile, 'utf-8'))
+        : [];
 
-            log(`\n${'━'.repeat(60)}`);
-            log(`Thread ${i + 1} / ${reviewLinks.length} — ${url}`);
+    // ── Step 2: scrape each pending thread ───────────────────
+    for (let i = 0; i < queueData.threads.length; i++) {
+        const entry = queueData.threads[i];
+        if (entry.status === 'done') {
+            log(`\n⏩ Thread ${i + 1} already done — skipping`);
+            continue;
+        }
 
-            try {
-                const { posts, pagesVisited, pageUrls } = await scrapeThread(page, url);
-                entry.status = 'done'; entry.pagesVisited = pagesVisited;
-                entry.pageUrls = pageUrls; entry.postsScraped = posts.length;
-                if (posts.length > 0) allThreadData.push({ threadUrl: url, pagesVisited, posts });
-            } catch (err) {
-                log(`⚠️  Error: ${err.message}`);
-                entry.status = 'error'; entry.error = err.message;
+        log(`\n${'─'.repeat(60)}`);
+        log(`Thread ${i + 1} / ${queueData.threads.length} — ${entry.threadUrl}`);
+
+        try {
+            const { posts, pagesVisited, pageUrls } = await scrapeThread(page, entry.threadUrl);
+            entry.status       = 'done';
+            entry.pagesVisited = pagesVisited;
+            entry.pageUrls     = pageUrls;
+            entry.postsScraped = posts.length;
+
+            if (posts.length > 0) {
+                allThreadData.push({ threadUrl: entry.threadUrl, pagesVisited, posts });
+
+                // Convert to Mongo docs
+                posts.forEach(post => {
+                    const doc = toMongoDoc({ post, threadUrl: entry.threadUrl, brandSlug, modelSlug });
+                    allMongoDocs.push(doc);
+                });
             }
+        } catch (err) {
+            log(`⚠️  Error: ${err.message}`);
+            entry.status = 'error';
+            entry.error  = err.message;
+        }
 
-            fs.writeFileSync(reviewsFile, JSON.stringify(allThreadData, null, 2), 'utf-8');
-            fs.writeFileSync(queueFile, JSON.stringify(queueData, null, 2), 'utf-8');
-            const total = allThreadData.reduce((s, t) => s + t.posts.length, 0);
-            log(`💾 Saved — ${allThreadData.length} threads, ${total} posts`);
+        // Persist after every thread
+        fs.writeFileSync(reviewsFile, JSON.stringify(allThreadData, null, 2), 'utf-8');
+        fs.writeFileSync(queueFile,   JSON.stringify(queueData, null, 2), 'utf-8');
+        fs.writeFileSync(mongoFile,   JSON.stringify(allMongoDocs, null, 2), 'utf-8');
 
-            if (i < reviewLinks.length - 1) {
-                log(`Pausing ${DELAY_BETWEEN_THREADS / 1000}s...`);
-                await DELAY(DELAY_BETWEEN_THREADS);
+        const total = allThreadData.reduce((s, t) => s + t.posts.length, 0);
+        log(`💾 Saved — ${allThreadData.length} threads, ${total} posts, ${allMongoDocs.length} mongo docs`);
+
+        if (i < queueData.threads.length - 1) {
+            log(`Pausing ${DELAY_BETWEEN_THREADS / 1000}s...`);
+            await DELAY(DELAY_BETWEEN_THREADS);
+        }
+    }
+
+    // Summary
+    const totalPosts = allThreadData.reduce((s, t) => s + t.posts.length, 0);
+    log(`\n🎉  Car done!  Threads: ${allThreadData.length}  |  Posts: ${totalPosts}  |  Mongo docs: ${allMongoDocs.length}`);
+    log(`    📄 Raw reviews  → ${reviewsFile}`);
+    log(`    🗄️  Mongo output → ${mongoFile}`);
+    log(`    📋 Queue        → ${queueFile}`);
+}
+
+// ──────────────────────────────────────────────
+// MAIN — loop over all cars with resume support
+// ──────────────────────────────────────────────
+(async () => {
+    fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+
+    const progress = loadProgress();
+    const startFrom = progress.lastCompletedCarIndex + 1;
+
+    log(`🚗  Team-BHP bulk scraper`);
+    log(`📋  Cars to process: ${CAR_LIST.length}`);
+    if (startFrom > 0) {
+        log(`⏩  Resuming from car index ${startFrom} (${CAR_LIST[startFrom]?.make} ${CAR_LIST[startFrom]?.model})`);
+    }
+    log(`👁️   Browser is VISIBLE\n`);
+
+    const browser = await puppeteer.launch({
+        headless: false,
+        defaultViewport: null,
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--start-maximized']
+    });
+
+    const page = await browser.newPage();
+    await page.setUserAgent(
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    );
+
+    try {
+        for (let i = startFrom; i < CAR_LIST.length; i++) {
+            await processCar(page, CAR_LIST[i], i);
+
+            // Save progress AFTER each car completes successfully
+            saveProgress(i);
+            log(`\n✅ Progress saved: car ${i + 1} / ${CAR_LIST.length} done`);
+
+            if (i < CAR_LIST.length - 1) {
+                log(`\nPausing ${DELAY_BETWEEN_CARS / 1000}s before next car...`);
+                await DELAY(DELAY_BETWEEN_CARS);
             }
         }
 
-        // ── Summary ───────────────────────────────────────────────
-        const totalPosts = allThreadData.reduce((s, t) => s + t.posts.length, 0);
         log(`\n${'═'.repeat(60)}`);
-        log(`🎉  All done!  Threads: ${allThreadData.length}  |  Posts: ${totalPosts}`);
-        log(`    📄 Reviews → ${reviewsFile}`);
-        log(`    📋 Queue   → ${queueFile}`);
-        log(`\n📊 Per-thread summary:`);
-        log(`    # | Pages | Posts | Thread`);
-        log(`    --+-------+-------+${'─'.repeat(50)}`);
-        queueData.threads.forEach(t => {
-            const title = t.threadUrl.split('/').pop().replace('.html', '').slice(0, 48);
-            log(`  ${String(t.index).padStart(3)} | ${String(t.pagesVisited).padStart(5)} | ${String(t.postsScraped).padStart(5)} | ${title}`);
-        });
+        log(`🏁  ALL CARS DONE!`);
+        log(`    Output directory: ${OUTPUT_DIR}`);
 
     } catch (err) {
-        log(`❌ Fatal: ${err.message}`); console.error(err);
+        log(`❌ Fatal error: ${err.message}`);
+        console.error(err);
+        log(`\n⚠️  Script crashed. Re-run to resume from last completed car.`);
     } finally {
         log('\nDone. Browser left open.');
     }

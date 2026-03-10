@@ -1,0 +1,39 @@
+{
+  "query": "Honda City ZX CVT",
+  "scrapedAt": "2026-03-10T10:55:31.108Z",
+  "totalThreads": 4,
+  "threads": [
+    {
+      "index": 1,
+      "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/145656-4th-gen-honda-city-official-review.html",
+      "status": "pending",
+      "pagesVisited": 0,
+      "pageUrls": [],
+      "postsScraped": 0
+    },
+    {
+      "index": 2,
+      "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/251312-honda-city-hybrid-review.html",
+      "status": "pending",
+      "pagesVisited": 0,
+      "pageUrls": [],
+      "postsScraped": 0
+    },
+    {
+      "index": 3,
+      "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/288819-2024-honda-amaze-review.html",
+      "status": "pending",
+      "pagesVisited": 0,
+      "pageUrls": [],
+      "postsScraped": 0
+    },
+    {
+      "index": 4,
+      "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/268661-honda-elevate-review.html",
+      "status": "pending",
+      "pagesVisited": 0,
+      "pageUrls": [],
+      "postsScraped": 0
+    }
+  ]
+}
