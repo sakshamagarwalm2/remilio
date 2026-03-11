@@ -1,0 +1,479 @@
+{
+  "tata_punch_pure_mt": {
+    "query": "Tata Punch Pure MT",
+    "scrapedAt": "2026-03-11T13:11:23.924Z",
+    "totalThreads": 40,
+    "threads": [
+      {
+        "index": 1,
+        "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/index39.html",
+        "status": "done",
+        "pagesVisited": 1,
+        "pageUrls": [
+          "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/index39.html"
+        ],
+        "postsScraped": 0
+      },
+      {
+        "index": 2,
+        "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/275703-2024-tata-punch-1-2l-bs6-2-mt-ownership-review-1-year-update.html",
+        "status": "done",
+        "pagesVisited": 2,
+        "pageUrls": [
+          "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/275703-2024-tata-punch-1-2l-bs6-2-mt-ownership-review-1-year-update.html",
+          "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/275703-2024-tata-punch-1-2l-bs6-2-mt-ownership-review-1-year-update-2.html"
+        ],
+        "postsScraped": 24
+      },
+      {
+        "index": 3,
+        "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review.html",
+        "status": "done",
+        "pagesVisited": 50,
+        "pageUrls": [
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-2.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-3.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-4.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-5.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-6.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-7.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-8.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-9.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-10.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-11.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-12.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-13.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-14.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-15.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-16.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-17.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-18.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-19.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-20.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-21.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-22.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-23.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-24.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-25.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-26.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-27.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-28.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-29.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-30.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-31.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-32.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-33.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-34.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-35.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-36.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-37.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-38.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-39.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-40.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-41.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-42.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-43.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-44.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-45.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-46.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-47.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-48.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-49.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/242888-tata-punch-review-50.html"
+        ],
+        "postsScraped": 739
+      },
+      {
+        "index": 4,
+        "threadUrl": "https://www.team-bhp.com/forum/what-car/254721-tata-punch-v-s-honda-amaze-replace-my-swift-update-chose-urban-cruiser.html",
+        "status": "done",
+        "pagesVisited": 5,
+        "pageUrls": [
+          "https://www.team-bhp.com/forum/what-car/254721-tata-punch-v-s-honda-amaze-replace-my-swift-update-chose-urban-cruiser.html",
+          "https://www.team-bhp.com/forum/what-car/254721-tata-punch-v-s-honda-amaze-replace-my-swift-update-chose-urban-cruiser-2.html",
+          "https://www.team-bhp.com/forum/what-car/254721-tata-punch-v-s-honda-amaze-replace-my-swift-update-chose-urban-cruiser-3.html",
+          "https://www.team-bhp.com/forum/what-car/254721-tata-punch-v-s-honda-amaze-replace-my-swift-update-chose-urban-cruiser-4.html",
+          "https://www.team-bhp.com/forum/what-car/254721-tata-punch-v-s-honda-amaze-replace-my-swift-update-chose-urban-cruiser-5.html"
+        ],
+        "postsScraped": 74
+      },
+      {
+        "index": 5,
+        "threadUrl": "https://www.team-bhp.com/forum/hatchbacks/295831-2025-tata-altroz-would-you-buy-base-mid-top-variant.html",
+        "status": "done",
+        "pagesVisited": 2,
+        "pageUrls": [
+          "https://www.team-bhp.com/forum/hatchbacks/295831-2025-tata-altroz-would-you-buy-base-mid-top-variant.html",
+          "https://www.team-bhp.com/forum/hatchbacks/295831-2025-tata-altroz-would-you-buy-base-mid-top-variant-2.html"
+        ],
+        "postsScraped": 19
+      },
+      {
+        "index": 6,
+        "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/303410-2025-tata-harrier-petrol-review.html",
+        "status": "done",
+        "pagesVisited": 8,
+        "pageUrls": [
+          "https://www.team-bhp.com/forum/official-new-car-reviews/303410-2025-tata-harrier-petrol-review.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/303410-2025-tata-harrier-petrol-review-2.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/303410-2025-tata-harrier-petrol-review-3.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/303410-2025-tata-harrier-petrol-review-4.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/303410-2025-tata-harrier-petrol-review-5.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/303410-2025-tata-harrier-petrol-review-6.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/303410-2025-tata-harrier-petrol-review-7.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/303410-2025-tata-harrier-petrol-review-8.html"
+        ],
+        "postsScraped": 116
+      },
+      {
+        "index": 7,
+        "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv.html",
+        "status": "done",
+        "pagesVisited": 68,
+        "pageUrls": [
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-2.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-3.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-4.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-5.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-6.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-7.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-8.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-9.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-10.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-11.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-12.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-13.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-14.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-15.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-16.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-17.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-18.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-19.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-20.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-21.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-22.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-23.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-24.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-25.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-26.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-27.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-28.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-29.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-30.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-31.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-32.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-33.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-34.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-35.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-36.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-37.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-38.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-39.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-40.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-41.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-42.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-43.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-44.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-45.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-46.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-47.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-48.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-49.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-50.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-51.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-52.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-53.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-54.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-55.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-56.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-57.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-58.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-59.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-60.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-61.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-62.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-63.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-64.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-65.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-66.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-67.html",
+          "https://www.team-bhp.com/forum/indian-car-scene/201067-tata-punch-aka-hornbill-compact-suv-68.html"
+        ],
+        "postsScraped": 1014
+      },
+      {
+        "index": 8,
+        "threadUrl": "https://www.team-bhp.com/forum/hatchbacks/301929-hyundai-i20-magna-ivt-vs-tata-altroz-pure-petrol-5amt.html",
+        "status": "done",
+        "pagesVisited": 2,
+        "pageUrls": [
+          "https://www.team-bhp.com/forum/hatchbacks/301929-hyundai-i20-magna-ivt-vs-tata-altroz-pure-petrol-5amt.html",
+          "https://www.team-bhp.com/forum/hatchbacks/301929-hyundai-i20-magna-ivt-vs-tata-altroz-pure-petrol-5amt-2.html"
+        ],
+        "postsScraped": 20
+      },
+      {
+        "index": 9,
+        "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/304520-2026-tata-punch-facelift-review.html",
+        "status": "done",
+        "pagesVisited": 3,
+        "pageUrls": [
+          "https://www.team-bhp.com/forum/official-new-car-reviews/304520-2026-tata-punch-facelift-review.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/304520-2026-tata-punch-facelift-review-2.html",
+          "https://www.team-bhp.com/forum/official-new-car-reviews/304520-2026-tata-punch-facelift-review-3.html"
+        ],
+        "postsScraped": 35
+      },
+      {
+        "index": 10,
+        "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/302884-2025-tata-sierra-review.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 11,
+        "threadUrl": "https://www.team-bhp.com/forum/hatchbacks/284992-best-automatic-car-10-lakh-budget.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 12,
+        "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/275846-tata-punch-facelift-launched-mid-2025-a.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 13,
+        "threadUrl": "https://www.team-bhp.com/forum/suvs-muvs-4x4s/272524-2023-tata-safari-versus-mahindra-xuv700.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 14,
+        "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/266136-maruti-jimny-review.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 15,
+        "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/288403-my-first-automatic-experience-2024-tata-harrier-2-0l.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 16,
+        "threadUrl": "https://www.team-bhp.com/forum/suvs-muvs-4x4s/297257-csuv-crossover-requirement-budget-11-lakh.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 17,
+        "threadUrl": "https://www.team-bhp.com/forum/suvs-muvs-4x4s/299185-suv-crossover-buy-after-gst-price-cuts.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 18,
+        "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/294777-2025-tata-altroz-facelift-review.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 19,
+        "threadUrl": "https://www.team-bhp.com/forum/hatchbacks/267030-tata-tiago-vs-maruti-ignis-vs-hyundai-grand-i10-nios-city-car-my-wife.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 20,
+        "threadUrl": "https://www.team-bhp.com/forum/suvs-muvs-4x4s/244530-tata-punch-vs-renault-kiger-vs-nissan-magnite-vs-maruti-vitara-brezza-vs-others.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 21,
+        "threadUrl": "https://www.team-bhp.com/forum/hatchbacks/256750-have-alto-punch-want-sell-one-get-its-automatic-variant-one.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 22,
+        "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/303460-2025-kia-seltos-review.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 23,
+        "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/262106-my-first-car-tata-punch-review-10-000-km-6-months.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 24,
+        "threadUrl": "https://www.team-bhp.com/forum/electric-cars/283860-tata-curvv-ev-review.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 25,
+        "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/186135-maruti-ignis-official-review.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 26,
+        "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/217182-kia-seltos-official-review.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 27,
+        "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/112549-new-car-price-check-thread-track-price-changes-discounts-offers-deals.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 28,
+        "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/249227-maruti-toyotas-creta-rivaling-midsize-suv-revealed-urban-cruiser-hyryder.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 29,
+        "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/271965-2023-tata-safari-facelift-review.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 30,
+        "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/261023-sold-off-my-tata-safari-kaziranga-xza-just-9-months.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 31,
+        "threadUrl": "https://www.team-bhp.com/forum/official-new-car-reviews/191396-tata-nexon-official-review.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 32,
+        "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/288001-tata-sierra-returning-2025-ev-ice-flavours-edit-launched-rs-11-49-lakhs.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 33,
+        "threadUrl": "https://www.team-bhp.com/forum/long-term-ownership-reviews/176375-my-pre-worshipped-toyota-fortuner-3-0l-4x4-mt-225-000-km-crunched-edit-sold.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 34,
+        "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/73032-sx4-zxi-mt-2010-nuevo-ownership-review.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 35,
+        "threadUrl": "https://www.team-bhp.com/forum/indian-car-scene/260903-kia-syros-companys-third-suv-slot-between-sonet-seltos.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 36,
+        "threadUrl": "https://www.team-bhp.com/forum/what-car/253842-finding-elusive-jack-all-trades-daily-drive-car-dad.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 37,
+        "threadUrl": "https://www.team-bhp.com/forum/sedans/264556-hyundai-verna-vs-honda-city-vs-volkswagen-virtus-vs-skoda-slavia-vs-maruti-ciaz.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 38,
+        "threadUrl": "https://www.team-bhp.com/forum/long-term-ownership-reviews/215733-ownership-review-my-kia-seltos-htk-1-5l-diesel-mt-coyote-edit-6-years-100-000-km-up.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 39,
+        "threadUrl": "https://www.team-bhp.com/forum/what-car/247767-i-cancelled-my-booking-thread.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      },
+      {
+        "index": 40,
+        "threadUrl": "https://www.team-bhp.com/forum/test-drives-initial-ownership-reports/278874-our-2024-5th-gen-honda-city-mt-comes-home.html",
+        "status": "pending",
+        "pagesVisited": 0,
+        "pageUrls": [],
+        "postsScraped": 0
+      }
+    ]
+  }
+}

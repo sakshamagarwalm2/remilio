@@ -1,5 +1,8 @@
 {
 	"dependencies": {
-		"puppeteer": "^24.38.0"
+		"@google/genai": "^1.44.0",
+		"axios": "^1.13.6",
+		"puppeteer": "^24.38.0",
+		"zod": "^4.3.6"
 	}
 }
