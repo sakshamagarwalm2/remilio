@@ -28,8 +28,175 @@ const DELAY_BETWEEN_CARS          = 5000;
 // ──────────────────────────────────────────────
 // CONSTANTS
 // ──────────────────────────────────────────────
-const OFFICIAL_REVIEW_BASE = 'https://www.team-bhp.com/forum/official-new-car-reviews';
 const OUTPUT_DIR = path.join(__dirname, 'scraped_data');
+
+// ──────────────────────────────────────────────
+// ──────────────────────────────────────────────
+// CATEGORIZATION — Rule-Based Classifier (no AI needed)
+//
+// Strategy: weighted keyword scoring per category.
+// Each rule set fires on the lowercased post text.
+// The category with the highest total score wins.
+// Tie-breaks fall through in priority order:
+//   Issue/Problem > Query > OwnershipReview >
+//   Comparison > Feedback > GeneralDiscussion
+// ──────────────────────────────────────────────
+
+const CATEGORIES = [
+    'OwnershipReview',   // Long-term personal ownership experience
+    'Feedback',          // Opinion on specific features / driving feel
+    'Query',             // Questions asked by users
+    'Comparison',        // Comparing two or more cars
+    'Issue/Problem',     // Faults, defects, reliability complaints
+    'GeneralDiscussion', // Anything that doesn't fit above
+];
+
+// ── Classifier rules ──────────────────────────────────────────────────────────
+// Each entry: { pattern: RegExp, score: number, category: string }
+// Patterns are tested against the full lowercased post.
+// Higher score = stronger signal.
+// ─────────────────────────────────────────────────────────────────────────────
+const CLASSIFIER_RULES = [
+
+    // ── Issue / Problem ───────────────────────────────────────────────────────
+    // Hard defects, service visits, breakdowns — highest priority
+    { pattern: /\b(broke down|breakdown|stall(?:ed|ing|s)?|won't start|doesn'?t start|dead battery|engine fail)\b/, score: 9, category: 'Issue/Problem' },
+    { pattern: /\b(vibrat(?:ion|ing|es?)|rattl(?:e|ing|ed)|clunk|squeak(?:ing|ed)?|noise from|knocking|grinding)\b/, score: 7, category: 'Issue/Problem' },
+    { pattern: /\b(problem|issue|fault|defect|complaint|warranty claim|service center complaint)\b/, score: 6, category: 'Issue/Problem' },
+    { pattern: /\b(recall|tsb|technical service bulletin)\b/, score: 8, category: 'Issue/Problem' },
+    { pattern: /\b(oil leak|coolant leak|transmission problem|gear(?:box)? issue|brake fail|abs fault|airbag warning)\b/, score: 8, category: 'Issue/Problem' },
+    { pattern: /\b(check engine|warning light|malfunction indicator|mil light)\b/, score: 9, category: 'Issue/Problem' },
+    { pattern: /\b(rust|corrosion|paint peel|body panel gap)\b/, score: 5, category: 'Issue/Problem' },
+    { pattern: /\b(went to (the )?service|service visit|took it to (the )?service|service center|service station)\b.*\b(complain|issue|problem|fix|repair)\b/, score: 7, category: 'Issue/Problem' },
+    { pattern: /\b(repair(?:ed|ing)?|replaced the|had to replace|mechanic|workshop)\b/, score: 4, category: 'Issue/Problem' },
+    { pattern: /\b(don'?t buy|avoid this car|worst car|terrible quality|pathetic (service|quality|build))\b/, score: 6, category: 'Issue/Problem' },
+    { pattern: /\b(nightmare|lemon|shocking quality|appalled|disgusted)\b/, score: 5, category: 'Issue/Problem' },
+
+    // ── Query ─────────────────────────────────────────────────────────────────
+    // Questions — strong signal from sentence-ending ? or explicit question words
+    { pattern: /\?{1,}/, score: 5, category: 'Query' },                          // any question mark
+    { pattern: /\?{2,}/, score: 3, category: 'Query' },                          // multiple ??
+    { pattern: /\b(anyone know|does anyone|can anyone|has anyone|has somebody)\b/, score: 7, category: 'Query' },
+    { pattern: /\b(please (advise|help|suggest|guide|clarify|confirm))\b/, score: 7, category: 'Query' },
+    { pattern: /\b(what is|what are|what's|what was|what would)\b/, score: 4, category: 'Query' },
+    { pattern: /\b(how (do|does|can|should|much|many|long|often))\b/, score: 5, category: 'Query' },
+    { pattern: /\b(which (is|are|one|model|variant|car|option))\b/, score: 5, category: 'Query' },
+    { pattern: /\b(is it|is there|are there|should i|would you|could you)\b/, score: 3, category: 'Query' },
+    { pattern: /\b(looking (for|to buy)|planning to buy|want to buy|thinking of buying)\b/, score: 4, category: 'Query' },
+    { pattern: /\b(need (advice|help|suggestions?|guidance|recommendations?))\b/, score: 6, category: 'Query' },
+    { pattern: /\b(kindly (advise|help|confirm|share|let me know))\b/, score: 6, category: 'Query' },
+    { pattern: /\b(let me know|please let|please share|please confirm)\b/, score: 4, category: 'Query' },
+
+    // ── Ownership Review ──────────────────────────────────────────────────────
+    // Long-term personal narratives with km/time milestones
+    { pattern: /\b\d{3,6}\s*(km|kms|kilometers?|kilometres?)\b/, score: 7, category: 'OwnershipReview' },  // "12000 km"
+    { pattern: /\b(my ownership (review|experience|report|story|update)|ownership review|long[- ]term ownership)\b/, score: 10, category: 'OwnershipReview' },
+    { pattern: /\b(i (have|had|own|owned|bought|purchased|got|drove|drive|been driving))\b.*\b(months?|years?|km|kms)\b/, score: 7, category: 'OwnershipReview' },
+    { pattern: /\b(my (car|vehicle|ride))\b.*\b(\d+\s*(km|months?|years?))\b/, score: 6, category: 'OwnershipReview' },
+    { pattern: /\b(long[- ]term)\b.*\b(review|experience|report|ownership)\b/, score: 9, category: 'OwnershipReview' },
+    { pattern: /\b(first (service|free service|paid service|scheduled service))\b/, score: 5, category: 'OwnershipReview' },
+    { pattern: /\b(fuel (efficiency|economy|consumption|mileage))\b.*\b(\d+(\.\d+)?\s*(kmpl|km\/l|l\/100|mpg))\b/, score: 6, category: 'OwnershipReview' },
+    { pattern: /\b(after\s+\d+\s*(km|months?|years?))\b/, score: 6, category: 'OwnershipReview' },
+    { pattern: /\b(clocked|covered|done\s+\d+)\b/, score: 5, category: 'OwnershipReview' },
+    { pattern: /\b(took delivery|delivery done|delivery report|delivery review)\b/, score: 5, category: 'OwnershipReview' },
+    { pattern: /\b(overall (rating|score|verdict|impression))\b.*\b(\d+\s*(\/|out of)\s*10)\b/, score: 6, category: 'OwnershipReview' },
+    { pattern: /\b(pros?\s+(and|&|vs\.?)\s*cons?)\b/i, score: 6, category: 'OwnershipReview' },
+    { pattern: /\b(buying (experience|process|story))\b/, score: 5, category: 'OwnershipReview' },
+
+    // ── Comparison ────────────────────────────────────────────────────────────
+    // Two or more named cars / brands being contrasted
+    { pattern: /\b(vs\.?|versus|compared? (to|with)|comparison)\b/, score: 7, category: 'Comparison' },
+    { pattern: /\bshortlisted?\b.*\b(between|and|or)\b/, score: 8, category: 'Comparison' },
+    { pattern: /\bbetween\b.*\band\b.*\b(car|suv|sedan|hatchback|mpv|ev|option)\b/, score: 6, category: 'Comparison' },
+    { pattern: /\b(better than|worse than|prefer(red|ring)? .{0,20} over|chose .{0,20} over)\b/, score: 6, category: 'Comparison' },
+    { pattern: /\b(both (cars?|vehicles?|options?)|either (car|option)|the other (car|option|model))\b/, score: 5, category: 'Comparison' },
+    // Named rival brands appearing together → strong comparison signal
+    { pattern: /\b(hyundai|kia|maruti|suzuki|honda|toyota|tata|mahindra|volkswagen|skoda|mg|jeep|ford|renault|nissan|bmw|mercedes|audi|volvo)\b.*\b(hyundai|kia|maruti|suzuki|honda|toyota|tata|mahindra|volkswagen|skoda|mg|jeep|ford|renault|nissan|bmw|mercedes|audi|volvo)\b/, score: 6, category: 'Comparison' },
+
+    // ── Feedback ──────────────────────────────────────────────────────────────
+    // Specific feature opinions without km milestones
+    { pattern: /\b(build quality|fit (and|&) finish|panel gap|NVH|cabin noise|road noise|wind noise)\b/, score: 6, category: 'Feedback' },
+    { pattern: /\b(suspension|ride quality|handling|steering feel|feedback|cornering|body roll)\b/, score: 5, category: 'Feedback' },
+    { pattern: /\b(infotainment|touchscreen|adas|lane keep|blind spot|cruise control|sunroof|panoramic)\b/, score: 5, category: 'Feedback' },
+    { pattern: /\b(seat comfort|legroom|headroom|boot space|cargo|practicality|ergonomic)\b/, score: 5, category: 'Feedback' },
+    { pattern: /\b(turbo|torque|power|acceleration|0 to 100|top speed|engine performance)\b/, score: 4, category: 'Feedback' },
+    { pattern: /\b(looks|design|styling|exterior|interior|colour|color|aesthetics)\b.*\b(love|like|hate|dislike|impressed|disappoint)\b/, score: 5, category: 'Feedback' },
+    { pattern: /\b(i (love|like|hate|dislike|prefer|enjoy|found|feel|think|noticed|observed))\b.*\b(feature|option|variant|part|system|mode)\b/, score: 4, category: 'Feedback' },
+    { pattern: /\b(good|great|excellent|superb|amazing|bad|poor|average|decent|mediocre)\b.*\b(ride|mileage|space|quality|engine|performance|comfort|build)\b/, score: 4, category: 'Feedback' },
+
+];
+
+// ── Structural signals (applied after keyword scoring) ───────────────────────
+// Long posts (>500 chars) with first-person "I have/had" boost OwnershipReview.
+// Short posts (<120 chars) with a "?" boost Query strongly.
+
+/**
+ * Pure rule-based post classifier. Zero network calls, runs synchronously.
+ * Returns one of the CATEGORIES strings.
+ */
+function categorizePost(postContent) {
+    const text = postContent.toLowerCase().replace(/\s+/g, ' ').trim();
+
+    // Accumulate scores per category
+    const scores = {
+        'OwnershipReview':   0,
+        'Feedback':          0,
+        'Query':             0,
+        'Comparison':        0,
+        'Issue/Problem':     0,
+        'GeneralDiscussion': 0,
+    };
+
+    for (const rule of CLASSIFIER_RULES) {
+        if (rule.pattern.test(text)) {
+            scores[rule.category] += rule.score;
+        }
+    }
+
+    // ── Structural boosts ─────────────────────────────────────────────────────
+    const charCount    = text.length;
+    const questionCount = (text.match(/\?/g) || []).length;
+    const hasFirstPerson = /\b(i have|i had|i own|i owned|i bought|i drove|my car|my vehicle)\b/.test(text);
+    const hasKmMention   = /\b\d{3,6}\s*(km|kms|kilometers?)\b/.test(text);
+
+    // Very short post with question mark → likely a query
+    if (charCount < 150 && questionCount >= 1) scores['Query'] += 5;
+
+    // Long first-person post mentioning km → strong ownership signal
+    if (charCount > 400 && hasFirstPerson && hasKmMention) scores['OwnershipReview'] += 6;
+
+    // Long post (review-length) with first-person but no question → ownership or feedback
+    if (charCount > 600 && hasFirstPerson && questionCount === 0) scores['OwnershipReview'] += 3;
+
+    // Purely short with no other signals → general discussion
+    if (charCount < 80 && questionCount === 0) scores['GeneralDiscussion'] += 3;
+
+    // ── Pick winner with tie-break priority ───────────────────────────────────
+    // Priority (highest → lowest) if scores tie:
+    const PRIORITY = ['Issue/Problem', 'Query', 'OwnershipReview', 'Comparison', 'Feedback', 'GeneralDiscussion'];
+
+    let bestCat   = 'GeneralDiscussion';
+    let bestScore = 0;
+
+    for (const cat of PRIORITY) {
+        if (scores[cat] > bestScore) {
+            bestScore = scores[cat];
+            bestCat   = cat;
+        }
+        // Strict ">" means first in priority order wins ties automatically
+    }
+
+    return bestCat;
+}
+
+/**
+ * Classify an array of posts synchronously.
+ * Returns an array of category strings in the same order as input.
+ * No async needed — rule engine is pure CPU.
+ */
+function categorizePosts(posts) {
+    return posts.map(p => categorizePost(p.content));
+}
 
 // ──────────────────────────────────────────────
 // RESUME / PROGRESS TRACKING
@@ -55,13 +222,23 @@ function saveProgress(carIndex) {
 const DELAY = ms => new Promise(r => setTimeout(r, ms));
 function log(msg) { console.log(`[${new Date().toLocaleTimeString()}] ${msg}`); }
 
+/**
+ * Normalize a thread URL so all paginated variants map to the same root key.
+ *
+ * Team-BHP paginated threads look like:
+ *   …/some-thread.html        ← page 1  (no suffix)
+ *   …/some-thread-2.html      ← page 2
+ *   …/some-thread-3.html      ← page 3
+ *
+ * We strip the trailing -N so every page of the same thread deduplicates to
+ * base-slug.html. The scraper follows "next page" links itself inside
+ * scrapeThread(), so we only ever queue the root (page-1) URL.
+ */
 function normalizeThreadUrl(href) {
-    return href.split('#')[0].replace(/-(\d+)\.html$/, '.html');
-}
-
-/** Only keep URLs that start with the official reviews base */
-function isOfficialReviewUrl(href) {
-    return href.startsWith(OFFICIAL_REVIEW_BASE);
+    // Drop fragment anchor first
+    const noFragment = href.split('#')[0];
+    // Strip -<digits>.html → .html  (only when digits immediately precede .html)
+    return noFragment.replace(/-\d+\.html$/, '.html');
 }
 
 /** Generate a deterministic Mongo-style ObjectId-like hex string from a string */
@@ -71,7 +248,7 @@ function makeObjectId(seed) {
 }
 
 /** Convert a post into the target MongoDB document shape */
-function toMongoDoc({ post, threadUrl, brandSlug, modelSlug }) {
+function toMongoDoc({ post, threadUrl, brandSlug, modelSlug, category }) {
     const brandOid  = makeObjectId(`brand_${brandSlug}`);
     const modelOid  = makeObjectId(`model_${modelSlug}`);
     const reviewOid = makeObjectId(`${threadUrl}_${post.postNumber}_${post.author.name}`);
@@ -110,6 +287,7 @@ function toMongoDoc({ post, threadUrl, brandSlug, modelSlug }) {
         upvotes:            0,
         userUploadedImages: [],
         status:             'pending',
+        category:           category || 'GeneralDiscussion',   // ← AI-assigned category
         // Extra metadata (not in schema but useful for traceability)
         _meta: {
             threadUrl,
@@ -154,11 +332,17 @@ async function waitForGSCPage(page, pageNum, timeoutMs = 10000) {
 // Grab links — only official-new-car-reviews URLs
 // ──────────────────────────────────────────────
 async function grabCurrentPageLinks(page) {
-    const links = await page.evaluate(() =>
+    return page.evaluate(() =>
         Array.from(document.querySelectorAll('a.gs-title, .gsc-webResult a[href], .gs-result a[href]'))
             .map(a => a.href || '')
+            .filter(h =>
+                h.includes('team-bhp.com/forum') &&
+                h.includes('.html') &&
+                !h.includes('/member') &&
+                !h.includes('/search.php') &&
+                !h.includes('/galleryV2')
+            )
     );
-    return links.filter(h => h.startsWith('https://www.team-bhp.com/forum/official-new-car-reviews') && h.includes('.html'));
 }
 
 // ──────────────────────────────────────────────
@@ -385,9 +569,22 @@ async function processCar(page, carEntry, carIndex) {
             if (posts.length > 0) {
                 allThreadData.push({ threadUrl: entry.threadUrl, pagesVisited, posts });
 
-                // Convert to Mongo docs
-                posts.forEach(post => {
-                    const doc = toMongoDoc({ post, threadUrl: entry.threadUrl, brandSlug, modelSlug });
+                // ── Categorize all posts via rule-based classifier ──────
+                log(`  🏷️  Categorizing ${posts.length} posts (rule-based)...`);
+                const categories = categorizePosts(posts);
+                const catSummary = {};
+                categories.forEach(c => { catSummary[c] = (catSummary[c] || 0) + 1; });
+                log(`  📊 Categories: ${JSON.stringify(catSummary)}`);
+
+                // Convert to Mongo docs (with category attached)
+                posts.forEach((post, idx) => {
+                    const doc = toMongoDoc({
+                        post,
+                        threadUrl: entry.threadUrl,
+                        brandSlug,
+                        modelSlug,
+                        category: categories[idx],
+                    });
                     allMongoDocs.push(doc);
                 });
             }
